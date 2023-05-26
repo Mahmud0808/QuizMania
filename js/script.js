@@ -108,10 +108,10 @@ function showQuestions(index) {
     " </span>";
   que_text.innerHTML = que_tag;
   option_list.innerHTML = option_tag;
-  const total_que = document.querySelector(".total_que");
-  let total_queTag =
+  const total_correct = document.querySelector(".total_correct");
+  let total_correctTag =
     "<p>" + userScore + " of " + questions.length + " correct</p>";
-  total_que.innerHTML = total_queTag;
+  total_correct.innerHTML = total_correctTag;
 
   const option = option_list.querySelectorAll(".options");
   for (let i = 0; i < option.length; i++) {
@@ -132,6 +132,10 @@ function optionSelected(answer) {
     userScore += 1;
     answer.classList.add("correct");
     answer.insertAdjacentHTML("beforeend", tickIcon);
+    const total_correct = document.querySelector(".total_correct");
+    let total_correctTag =
+      "<p>" + userScore + " of " + questions.length + " correct</p>";
+    total_correct.innerHTML = total_correctTag;
   } else {
     answer.classList.add("incorrect");
     answer.insertAdjacentHTML("beforeend", crossIcon);
