@@ -8,6 +8,7 @@ const option_list = document.querySelector(".MyOptions");
 const timeCount = document.querySelector(".TimeCount .Seconds");
 const timeLine = document.querySelector(".QuestionsHeader .time_lines");
 const timeOff = document.querySelector(".QuestionsHeader .TimeLeft");
+const indexes = [...Array(questions.length).keys()];
 
 MyBtn.onclick = () => {
   RulesBox.classList.add("activeInfo");
@@ -17,6 +18,8 @@ exitButton.onclick = () => {
   RulesBox.classList.remove("activeInfo");
   MyQuizApp.classList.remove("hideInfo");
 };
+
+var que_index = shuffleArray(indexes);
 
 ContinueButton.onclick = () => {
   RulesBox.classList.remove("activeInfo");
@@ -46,6 +49,7 @@ restart_quiz.onclick = () => {
   startTimerLine(widthValue);
   nextBtn.style.display = "none";
   timeOff.textContent = "Time Left";
+  console.log(que_index);
 };
 
 quit_quiz.onclick = () => {
@@ -73,39 +77,39 @@ nextBtn.onclick = () => {
   } else {
     clearInterval(counter);
     clearInterval(counterLine);
-    console.log("You Have Completd Your Task 🥰");
     showResultBox();
   }
 };
 
 function showQuestions(index) {
   const que_text = document.querySelector(".text");
+  let numbers = [...Array(4).keys()];
+  let shuffledNumbers = shuffleArray(numbers);
 
   let option_tag =
     '<div class="options"><span>' +
-    questions[index].options[0] +
+    questions[que_index[index]].options[shuffledNumbers[0]] +
     "</span></div>" +
     '<div class="options"><span>' +
-    questions[index].options[1] +
+    questions[que_index[index]].options[shuffledNumbers[1]] +
     "</span></div>" +
     '<div class="options"><span>' +
-    questions[index].options[2] +
+    questions[que_index[index]].options[shuffledNumbers[2]] +
     "</span></div>" +
     '<div class="options"><span>' +
-    questions[index].options[3] +
+    questions[que_index[index]].options[shuffledNumbers[3]] +
     "</span></div>";
 
   let que_tag =
     "<span>" +
-    questions[index].numb +
+    (index + 1) +
     ". " +
-    questions[index].question +
+    questions[que_index[index]].question +
     " </span>";
   que_text.innerHTML = que_tag;
   option_list.innerHTML = option_tag;
   const total_que = document.querySelector(".total_que");
-  let total_queTag =
-    "<p>" + questions[index].numb + " of " + questions.length + " </p>";
+  let total_queTag = "<p>" + (index + 1) + " of " + questions.length + " </p>";
   total_que.innerHTML = total_queTag;
 
   const option = option_list.querySelectorAll(".options");
@@ -114,25 +118,21 @@ function showQuestions(index) {
   }
 }
 
-let tickIcon = '<div class="tick icon"><i class="fas fa-check"></i></div>';
-let crossIcon = '<div class="cross icon"><i class="fas fa-times"></i></div>';
-
 function optionSelected(answer) {
   clearInterval(counter);
   clearInterval(counterLine);
   let userAns = answer.textContent;
-  let correctAns = questions[que_count].answer;
+  let correctAns = questions[que_index[que_count]].answer;
   let alloptions = option_list.children.length;
+  let tickIcon = '<div class="tick icon"><i class="fa fa-check"></i></div>';
+  let crossIcon = '<div class="cross icon"><i class="fa fa-times"></i></div>';
 
   if (userAns == correctAns) {
     userScore += 1;
-    console.log(userScore);
     answer.classList.add("correct");
-    console.log("Answer Is Correct");
     answer.insertAdjacentHTML("beforeend", tickIcon);
   } else {
     answer.classList.add("incorrect");
-    console.log("Answer Is Wrong ");
     answer.insertAdjacentHTML("beforeend", crossIcon);
 
     for (let i = 0; i < alloptions; i++) {
@@ -155,11 +155,12 @@ function showResultBox() {
   Questions.classList.remove("activeQuiz");
   result_box.classList.add("activeResult");
   MyQuizApp.classList.add("hideInfo");
+  que_index = shuffleArray(indexes);
 
   const scoreText = document.querySelector(".score_text");
   if (userScore > 3) {
     let scoreTag =
-      "<span>Congratulations You Got <p>" +
+      "<span>Congratulations. You Got <p>" +
       userScore +
       "</p> Out of <p>" +
       questions.length +
@@ -167,7 +168,7 @@ function showResultBox() {
     scoreText.innerHTML = scoreTag;
   } else if (userScore > 1) {
     let scoreTag =
-      "<span>Carry On 👌 You Got <p>" +
+      "<span>Carry On. You Got <p>" +
       userScore +
       "</p> Out of <p>" +
       questions.length +
@@ -175,7 +176,7 @@ function showResultBox() {
     scoreText.innerHTML = scoreTag;
   } else {
     let scoreTag =
-      "<span> I Am  Sorry You Got <p>" +
+      "<span> I Am Sorry. You Got <p>" +
       userScore +
       "</p> Out of <p>" +
       questions.length +
@@ -228,4 +229,14 @@ function startTimerLine(length) {
       clearInterval(counterLine);
     }
   }
+}
+
+function shuffleArray(array) {
+  for (var i = array.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i + 1));
+    var temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+  return array;
 }

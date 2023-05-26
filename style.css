@@ -20,6 +20,7 @@ body {
   box-shadow: rgb(0 0 0 / 10%) 0px 10px 50px;
   border-radius: 30px;
   padding: 20px;
+  border-bottom: 6px solid #99a7e8;
 }
 .MyQuizApp.hideInfo {
   opacity: 0;
@@ -56,9 +57,13 @@ body {
   bottom: 0;
   right: 0;
   position: absolute;
+  border-left: 4px solid #ffab9c;
+  border-top: 4px solid #ffab9c;
 }
 .MyBtn button:hover {
   background-color: rgb(29, 194, 194);
+  border-left: 4px solid #a9d9d9;
+  border-top: 4px solid #a9d9d9;
 }
 .RulesBox.activeInfo {
   opacity: 1;
@@ -75,6 +80,7 @@ body {
   opacity: 0;
   pointer-events: none;
   padding: 20px;
+  border-bottom: 6px solid #99a7e8;
 }
 .RulesTitle {
   text-align: center;
@@ -108,9 +114,13 @@ ol li {
   bottom: 0;
   left: 0;
   position: absolute;
+  border-right: 4px solid #ffab9c;
+  border-top: 4px solid #ffab9c;
 }
 .ExitButton:hover {
-  background-color: red;
+  background-color: #f03e3e;
+  border-right: 4px solid #e69c9c;
+  border-top: 4px solid #e69c9c;
 }
 .ContinueButton {
   font-size: 20px;
@@ -126,9 +136,13 @@ ol li {
   bottom: 0;
   right: 0;
   position: absolute;
+  border-left: 4px solid #ffab9c;
+  border-top: 4px solid #ffab9c;
 }
 .ContinueButton:hover {
   background-color: rgb(29, 194, 194);
+  border-left: 4px solid #a9d9d9;
+  border-top: 4px solid #a9d9d9;
 }
 .Questions.activeQuiz {
   opacity: 1;
@@ -145,6 +159,7 @@ ol li {
   opacity: 0;
   pointer-events: none;
   padding: 6px 20px 20px 20px;
+  border-bottom: 6px solid #99a7e8;
 }
 .QuestionsHeader {
   position: relative;
@@ -247,9 +262,13 @@ footer button {
   right: 0;
   position: absolute;
   display: none;
+  border-left: 4px solid #ffab9c;
+  border-top: 4px solid #ffab9c;
 }
 footer .nextBtn:hover {
   background-color: rgb(29, 194, 194);
+  border-left: 4px solid #a9d9d9;
+  border-top: 4px solid #a9d9d9;
 }
 .options.correct {
   color: #155724;
@@ -286,6 +305,7 @@ footer .nextBtn:hover {
   justify-content: center;
   transition: all 0.3s ease;
   padding: 20px;
+  border-bottom: 6px solid #99a7e8;
 }
 .ResultImg img {
   width: 100%;
@@ -325,16 +345,22 @@ footer .nextBtn:hover {
 .restart1 {
   background-color: tomato;
   color: #fff;
+  border-left: 4px solid #ffab9c;
+  border-top: 4px solid #ffab9c;
 }
 .restart1:hover {
   background-color: rgb(29, 194, 194);
+  border-left: 4px solid #a9d9d9;
+  border-top: 4px solid #a9d9d9;
 }
 .quit {
   background-color: tomato;
   color: #fff;
+  border-left: 4px solid #ffab9c;
+  border-top: 4px solid #ffab9c;
 }
 .quit:hover {
-  background-color: red;
+  background-color: #f03e3e;
 }
 .result_box.activeResult {
   z-index: 5;
