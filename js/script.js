@@ -163,7 +163,7 @@ function showResultBox() {
   que_index = shuffleArray(indexes);
 
   const scoreText = document.querySelector(".score_text");
-  if (userScore > 3) {
+  if (userScore > 6) {
     let scoreTag =
       "<span>Congratulations. You Got <p>" +
       userScore +
@@ -171,7 +171,7 @@ function showResultBox() {
       questions.length +
       "</p></span>";
     scoreText.innerHTML = scoreTag;
-  } else if (userScore > 1) {
+  } else if (userScore > 3) {
     let scoreTag =
       "<span>Carry On. You Got <p>" +
       userScore +
